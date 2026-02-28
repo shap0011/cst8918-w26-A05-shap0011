@@ -178,7 +178,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   admin_ssh_key {
     username   = var.admin_username
-    public_key = file("${path.module}/id_rsa_clean.pub")
+    public_key = trimspace(file("C:/Users/olga_/.ssh/cst8918_a05_rsa.pub"))
   }
 
   os_disk {
