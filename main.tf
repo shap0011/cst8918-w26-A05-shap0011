@@ -152,7 +152,7 @@ resource "azurerm_network_interface_security_group_association" "nsg_assoc" {
 # -------------------------
 data "cloudinit_config" "init" {
   gzip          = false
-  base64_encode = false
+  base64_encode = true
 
   part {
     filename     = "init.sh"
@@ -193,5 +193,5 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 
-  custom_data = base64encode(data.cloudinit_config.init.rendered)
+  custom_data = data.cloudinit_config.init.rendered
 }
